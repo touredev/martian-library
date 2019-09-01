@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Powerful tool to avoid N+1 DB or HTTP queries
+gem 'batch-loader'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'dotenv-rails', groups: [:development, :test]
