@@ -6,10 +6,11 @@ import ProcessItemForm from "../ProcessItemForm";
 
 const AddItemForm = () => (
   <Mutation mutation={AddItemMutation}>
-    {(addItem, { loading }) => (
+    {(addItem, { loading, data }) => (
       <ProcessItemForm
         buttonText="Add Item"
         loading={loading}
+        errors={data && data.addItem.errors}
         // Update library query after Mutation will be finished
         onProcessItem={({ title, description, imageUrl }) =>
           addItem({
@@ -22,7 +23,9 @@ const AddItemForm = () => (
             update: (cache, { data: { addItem } }) => {
               const item = addItem.item;
               if (item) {
-                const currentItems = cache.readQuery({ query: LibraryQuery });
+                const currentItems = cache.readQuery({
+                  query: LibraryQuery
+                });
                 cache.writeQuery({
                   query: LibraryQuery,
                   data: {

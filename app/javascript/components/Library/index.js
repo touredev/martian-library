@@ -8,8 +8,10 @@ const Library = () => {
   const [item, setItem] = useState(null);
   return (
     <Query query={LibraryQuery}>
+      
       {({ data, loading }) => (
         <div className={cs.library}>
+          
           {loading || !data.items
             ? "loading..."
             : data.items.map(({ title, id, user, imageUrl, description }) => (
